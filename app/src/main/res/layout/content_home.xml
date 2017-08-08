@@ -5,57 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.tacademy.pedokio.MainActivity">
+    tools:context="com.example.tacademy.pedokio.MainActivity"
+    android:background="#e2e2e2">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:background="#00ff0000"
-            android:scaleType="fitXY"
-            android:src="@drawable/marker" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:scaleType="fitXY"
-            android:background="#00ff0000"
-            android:src="@drawable/hotel" />
-
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:scaleType="fitXY"
-            android:background="#00ff0000"
-            android:src="@drawable/drink" />
-
-        <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="7dp"
-            android:scaleType="fitXY"
-            android:background="#00ff0000"
-            android:src="@drawable/heart" />
-
-    </LinearLayout>
 
     <com.example.tacademy.pedokio.BannerLayout
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="110dp"
         app:autoPlayDuration="4000"
         app:indicatorMargin="10dp"
         app:indicatorPosition="rightBottom"
@@ -70,7 +27,11 @@
         app:unSelectedIndicatorHeight="6dp"
         app:unSelectedIndicatorWidth="6dp" />
 
+    <include layout="@layout/activity_advertisepager"/>
+
     <include layout="@layout/activity_advertise" />
+
+    <include layout="@layout/activity_advertiseb"/>
 
 
 </LinearLayout>

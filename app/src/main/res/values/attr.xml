@@ -29,4 +29,5 @@
         <attr name="scrollDuration" format="integer|reference" />
         <attr name="isAutoPlay" format="boolean|reference"/>
     </declare-styleable>
+
 </resources>
