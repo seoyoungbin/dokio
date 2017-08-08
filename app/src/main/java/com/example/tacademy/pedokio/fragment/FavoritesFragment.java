@@ -13,7 +13,7 @@ import com.example.tacademy.pedokio.R;
  * Created by Wim on 11/30/16.
  */
 public class FavoritesFragment extends Fragment {
-
+//
     public static FavoritesFragment newInstance() {
         return new FavoritesFragment();
     }
