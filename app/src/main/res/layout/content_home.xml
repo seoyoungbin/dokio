@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tacademy.pedokio.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="7dp"
+            android:background="#00ff0000"
+            android:scaleType="fitXY"
+            android:src="@drawable/marker" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="7dp"
+            android:scaleType="fitXY"
+            android:background="#00ff0000"
+            android:src="@drawable/hotel" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="7dp"
+            android:scaleType="fitXY"
+            android:background="#00ff0000"
+            android:src="@drawable/drink" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="7dp"
+            android:scaleType="fitXY"
+            android:background="#00ff0000"
+            android:src="@drawable/heart" />
+
+    </LinearLayout>
+
+    <com.example.tacademy.pedokio.BannerLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:autoPlayDuration="4000"
+        app:indicatorMargin="10dp"
+        app:indicatorPosition="rightBottom"
+        app:indicatorShape="rect"
+        app:indicatorSpace="3dp"
+        app:isAutoPlay="true"
+        app:scrollDuration="600"
+        app:selectedIndicatorColor="?attr/colorPrimary"
+        app:selectedIndicatorHeight="6dp"
+        app:selectedIndicatorWidth="6dp"
+        app:unSelectedIndicatorColor="#99ffffff"
+        app:unSelectedIndicatorHeight="6dp"
+        app:unSelectedIndicatorWidth="6dp" />
+
+    <include layout="@layout/activity_advertise" />
+
+
+</LinearLayout>
