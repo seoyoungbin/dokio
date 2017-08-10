@@ -1,5 +1,6 @@
 package com.example.tacademy.pedokio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -19,12 +20,15 @@ public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView bottomNavigationView;
     Fragment fragment = null;
+    int login_posiotion = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        login_posiotion = intent.getIntExtra("login_pos",0);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -110,10 +114,16 @@ public class MainActivity extends AppCompatActivity
             fra();
 
         } else if (id == R.id.action_person){
-            fragment = ProfileFragment.newInstance();
-            fra();
+           if(login_posiotion == 0) {
+               fragment = LoginDefaultActivity.newInstance();
+               fra();
+           } else {
+               fragment = ProfileFragment.newInstance();
+               fra();
+           }
 
         } else if (id == R.id.action_search){
+
 
             fragment = SearchFragment.newInstance();
             fra();

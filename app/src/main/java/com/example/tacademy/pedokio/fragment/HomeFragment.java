@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 
 import com.example.tacademy.pedokio.BannerLayout;
 import com.example.tacademy.pedokio.R;
@@ -22,6 +23,7 @@ import java.util.List;
 public class HomeFragment extends Fragment{
 
     private AppCompatActivity activity;
+    HorizontalScrollView hscroll;
 
     public HomeFragment() {
     }
@@ -38,9 +40,11 @@ public class HomeFragment extends Fragment{
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         BannerLayout bannerLayout = (BannerLayout)view.findViewById(R.id.banner);
+        hscroll = (HorizontalScrollView)view.findViewById(R.id.hscroll);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         activity = ((AppCompatActivity) getActivity());
         activity.setSupportActionBar(toolbar);
+        hscroll.setHorizontalScrollBarEnabled(false);
 
 
 
