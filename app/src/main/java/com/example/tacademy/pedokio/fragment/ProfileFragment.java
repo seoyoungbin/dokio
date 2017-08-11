@@ -16,6 +16,7 @@ import com.example.tacademy.pedokio.R;
 public class ProfileFragment extends Fragment {
     private AppCompatActivity activity;
 
+
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }

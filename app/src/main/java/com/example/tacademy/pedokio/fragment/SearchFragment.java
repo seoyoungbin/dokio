@@ -8,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.tacademy.pedokio.FilterActivity;
 import com.example.tacademy.pedokio.R;
 import com.example.tacademy.pedokio.SearchViewActivity;
 
@@ -20,6 +22,7 @@ public class SearchFragment extends Fragment {
 
     private AppCompatActivity activity;
     ImageButton search;
+    Button filterbtn;
 
     public static SearchFragment newInstance() {
         return new SearchFragment();
@@ -31,10 +34,19 @@ public class SearchFragment extends Fragment {
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar2);
         activity = ((AppCompatActivity) getActivity());
         search = view.findViewById(R.id.searchimg);
+        filterbtn = view.findViewById(R.id.filterbtn);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, SearchViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        filterbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, FilterActivity.class);
                 startActivity(intent);
             }
         });

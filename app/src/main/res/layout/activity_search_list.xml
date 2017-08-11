@@ -35,6 +35,103 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingBottom="1dp"
+                    android:paddingRight="1dp"
+                    android:background="#aaaaaa"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="총갯수"
+                        android:gravity="center"
+                        android:background="#FFFFFF"/>
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#aaaaaa"
+                    android:paddingBottom="1dp"
+                    android:paddingRight="1dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="정렬"
+                        android:gravity="center"
+                        android:background="#FFFFFF"
+                        />
+                    </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#aaaaaa"
+                    android:paddingRight="1dp"
+                    android:paddingBottom="1dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="가까운 거리순"
+                        android:gravity="center"
+                        android:background="#FFFFFF"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#aaaaaa"
+                    android:paddingRight="1dp"
+                    android:paddingBottom="1dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="낮은 가격순"
+                        android:gravity="center"
+                        android:background="#FFFFFF"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#aaaaaa"
+                    android:paddingBottom="1dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="추천수"
+                        android:gravity="center"
+                        android:background="#FFFFFF"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
         <ListView
             android:id="@+id/listview"
             android:layout_width="match_parent"

@@ -42,47 +42,68 @@
             android:layout_marginTop="90dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
-        <LinearLayout
+            <LinearLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/edit_login"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/person"
-                android:scaleType="fitXY"
-                android:padding="10dp"
-                android:layout_marginLeft="3dp"/>
-            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="아이디 입력"
-                android:textSize="12sp"
-                android:background="@null"/>
-        </LinearLayout>
+                android:layout_height="40dp"
+                android:background="@drawable/edit_login"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/person"
+                    android:scaleType="fitXY"
+                    android:padding="10dp"
+                    android:layout_marginLeft="3dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="아이디 입력"
+                    android:textSize="12sp"
+                    android:background="@null"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/edit_login">
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/locked"
-                android:scaleType="fitXY"
-                android:padding="10dp"
-                android:layout_marginLeft="3dp"/>
-            <EditText
+            <LinearLayout
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="비밀번호 입력"
-                android:textSize="12sp"
-                android:inputType="textPassword"
-                android:background="@null"/>
-        </LinearLayout>
+                android:layout_height="40dp"
+                android:background="@drawable/edit_login">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/locked"
+                    android:scaleType="fitXY"
+                    android:padding="10dp"
+                    android:layout_marginLeft="3dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="비밀번호 입력"
+                    android:textSize="12sp"
+                    android:inputType="textPassword"
+                    android:background="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_login">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/locked"
+                    android:scaleType="fitXY"
+                    android:padding="10dp"
+                    android:layout_marginLeft="3dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="비밀번호 확인"
+                    android:textSize="12sp"
+                    android:inputType="textPassword"
+                    android:background="@null"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -99,30 +120,16 @@
                 android:padding="5dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_login"
-                android:text="로그인"
-                android:textColor="#FFFFFF"
-                android:id="@+id/lbtn"
-                />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_login"
+                    android:text="회원가입"
+                    android:textColor="#FFFFFF"
+                    android:id="@+id/lbtn"
+                    />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="회원가입"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/button_login"
-                android:id="@+id/signupbtn"/>
-            </LinearLayout>
+
 
 
         </LinearLayout>
@@ -133,12 +140,12 @@
             android:layout_marginTop="40dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="2"
-            android:background="#FFFFFF"
-            ></LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="2"
+                android:background="#FFFFFF"
+                ></LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -159,6 +166,7 @@
                 ></LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -198,13 +206,13 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이미 계정이 있으시다면"
-            android:textColor="#FFFFFF"
-            android:textSize="9dp"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미 계정이 있으시다면"
+                android:textColor="#FFFFFF"
+                android:textSize="9dp"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
