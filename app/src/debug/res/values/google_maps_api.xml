@@ -4,7 +4,7 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=EF:0D:22:2D:58:74:A0:EC:A1:8A:E3:2B:CB:A2:88:20:8F:8C:2A:29%3Bcom.example.tacademy.pedokio
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=EF:0D:22:2D:58:74:A0:EC:A1:8A:E3:2B:CB:A2:88:20:8F:8C:2A:29%3Bcom.dokio.tacademy.pedokio
 
     You can also add your credentials to an existing key, using these values:
 

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.tacademy.pedokio.MainActivity"
+    tools:context="com.dokio.tacademy.pedokio.com.dokio.tacademy.pedokio.MainActivity"
     android:background="#e2e2e2">
 
 
-    <com.example.tacademy.pedokio.BannerLayout
+    <com.dokio.tacademy.pedokio.BannerLayout
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="110dp"

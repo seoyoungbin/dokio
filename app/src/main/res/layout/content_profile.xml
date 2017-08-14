@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tacademy.pedokio.MainActivity"
+    tools:context="com.dokio.tacademy.pedokio.com.dokio.tacademy.pedokio.MainActivity"
     android:orientation="vertical"
     android:background="#e2e2e2">
 
@@ -86,7 +86,8 @@
             android:layout_height="80dp"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@drawable/button_profile">
+            android:background="@drawable/button_profile"
+            >
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -105,7 +106,8 @@
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/button_profile"
-            android:layout_marginLeft="8dp">
+            android:layout_marginLeft="8dp"
+            android:id="@+id/starbtn">
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -143,7 +145,8 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_marginLeft="8dp"
-            android:background="@drawable/button_profile">
+            android:background="@drawable/button_profile"
+            android:id="@+id/memobtn">
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -155,6 +158,7 @@
                 android:text="메모작성"
                 android:textColor="#000000"
                 android:gravity="center"/>
+
         </LinearLayout>
 
 
