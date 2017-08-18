@@ -18,4 +18,11 @@
     <string name="search_edit">검색어를 입력해주세요</string>
     <string name="tab1">시설정보</string>
     <string name="tab2">후기</string>
+
+    <!-- facebook -->
+    <string name="facebook_app_id">863872903777274</string>
+    <string name="fb_login_protocol_scheme">fb863872903777274</string>
+
+    <!-- kakao -->
+    <string name="kakao_app_key">e470aa358ae545f3f429c2ed76d74770</string>
 </resources>

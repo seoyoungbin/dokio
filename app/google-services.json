@@ -1,0 +1,210 @@
+{
+  "project_info": {
+    "project_number": "1020842246604",
+    "firebase_url": "https://firstfbtest-daa89.firebaseio.com",
+    "project_id": "firstfbtest-daa89",
+    "storage_bucket": "firstfbtest-daa89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:a005d54b10b8ef44",
+        "android_client_info": {
+          "package_name": "com.example.tacademy.fbtest175"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:215d01cb2dc82a57",
+        "android_client_info": {
+          "package_name": "com.example.tacademy.facebooktest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:07b129fd0661273c",
+        "android_client_info": {
+          "package_name": "com.example.tacademy.testgit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:8f938500239c3478",
+        "android_client_info": {
+          "package_name": "com.example.tacademy.func1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:ada5dff085fdc823",
+        "android_client_info": {
+          "package_name": "tacadamy.logintest.sns.snsloginex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-qa1ogq6bu659re4f6n3jjlajv4ni7bcp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tacadamy.logintest.sns.snsloginex",
+            "certificate_hash": "ef0d222d5874a0eca18ae32bcba288208f8c2a29"
+          }
+        },
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020842246604:android:2444587da6c4fd2e",
+        "android_client_info": {
+          "package_name": "com.dokio.tacademy.pedokio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020842246604-moe0o0shd1p3s6r3h6nltha17m5slphe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-b1lYVjUO0cCaPusXaTEbxgCsNoj11VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
