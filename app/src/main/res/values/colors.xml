@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#E53935</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBackground">#F8F8F8</color>
+    <color name="colorNavAccentSelected">#ef5350</color>
+    <color name="colorNavAccentUnselected">#000000</color>
+
 </resources>

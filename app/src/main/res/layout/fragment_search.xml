@@ -65,8 +65,6 @@
         android:layout_below="@+id/linearLayout"
         android:orientation="horizontal">
 
-        <include layout="@layout/activity_maps" />
-
     </LinearLayout>
 
 

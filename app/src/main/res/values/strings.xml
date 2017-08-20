@@ -18,6 +18,12 @@
     <string name="search_edit">검색어를 입력해주세요</string>
     <string name="tab1">시설정보</string>
     <string name="tab2">후기</string>
+    <string name="signup1">이미 계정이 있으신가요?</string>
+    <string name="signup2">로그인</string>
+    <string name="title_home">홈</string>
+    <string name="title_search">장소검색</string>
+    <string name="title_cast">캐스트</string>
+    <string name="title_mymenu">마이메뉴</string>
 
     <!-- facebook -->
     <string name="facebook_app_id">863872903777274</string>
