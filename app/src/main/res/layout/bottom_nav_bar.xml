@@ -40,9 +40,10 @@
                 android:tint="@color/colorNavAccentSelected"/>
 
             <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="HOME"
+                android:gravity="center"
+                tools:text="홈"
                 android:textSize="12sp"
                 android:id="@+id/textViewBar1"
                 android:textColor="@color/colorNavAccentSelected"/>
@@ -73,9 +74,10 @@
                 android:tint="@color/colorNavAccentUnselected"/>
 
             <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="SUPPORT"
+                tools:text="장소검색"
+                android:gravity="center"
                 android:textSize="12sp"
                 android:id="@+id/textViewBar2"
                 android:textColor="@color/colorNavAccentUnselected"/>
@@ -106,9 +108,10 @@
                 android:tint="@color/colorNavAccentUnselected"/>
 
             <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="BILLING"
+                android:gravity="center"
+                tools:text="캐스트"
                 android:textSize="12sp"
                 android:id="@+id/textViewBar3"
                 android:textColor="@color/colorNavAccentUnselected"/>
@@ -139,9 +142,10 @@
                 android:tint="@color/colorNavAccentUnselected"/>
 
             <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="PROFILE"
+                android:gravity="center"
+                tools:text="마이메뉴"
                 android:textSize="12sp"
                 android:id="@+id/textViewBar4"
                 android:textColor="@color/colorNavAccentUnselected"/>
