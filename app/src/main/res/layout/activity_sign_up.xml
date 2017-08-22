@@ -7,7 +7,7 @@
     tools:context="com.dokio.tacademy.pedokio.LoginActivity"
     android:orientation="vertical"
     android:background="@drawable/background_signup"
-    android:weightSum="640"
+    android:weightSum="616"
     >
 
     <LinearLayout
@@ -35,7 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="250"></LinearLayout>
+        android:layout_weight="218"></LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
