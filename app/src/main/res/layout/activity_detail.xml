@@ -7,48 +7,151 @@
     android:orientation="vertical"
     tools:context="com.dokio.tacademy.pedokio.DetailActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:orientation="horizontal"
-            >
-        <ImageButton
-            android:layout_width="56dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/leftarrow"
-            android:scaleType="fitXY"
-            android:background="#00000000"
-            android:padding="18dp"/>
-        </LinearLayout>
-
-
-    </android.support.design.widget.AppBarLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <com.recker.flybanner.FlyBanner
-            android:id="@+id/banner_1"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TabHost
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <com.recker.flybanner.FlyBanner
+                android:id="@+id/banner_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tabhost">
+                android:layout_height="match_parent" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:orientation="vertical"
+                    android:weightSum="150">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="8"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="48"
+                        android:orientation="horizontal"
+                        android:weightSum="360">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="8"></LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="48"
+                            android:background="#00000000"
+                            android:src="@drawable/backicon"></ImageButton>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="144"></LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="160"
+                            android:orientation="vertical"
+                            android:weightSum="48">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="32"
+                                android:orientation="horizontal"
+                                android:weightSum="160">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="32"
+                                    android:background="@drawable/detail_button"
+                                    android:text="길찾기"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="10sp"></Button>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="8"></LinearLayout>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="32"
+                                    android:background="@drawable/detail_button"
+                                    android:text="추천"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="10sp"></Button>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="8"></LinearLayout>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="32"
+                                    android:background="@drawable/detail_button"
+                                    android:text="공유"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="10sp"></Button>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="8"></LinearLayout>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="32"
+                                    android:background="@drawable/detail_button"
+                                    android:text="즐겨\n찾기"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="10sp"></Button>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="8"></LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TabHost
+                android:id="@+id/tabhost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#eeeeee"
                     android:orientation="vertical">
 
                     <TabWidget
@@ -61,263 +164,368 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:id="@+id/tab1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:background="#eeeeee"
                             android:orientation="vertical">
 
                             <ScrollView
-                                android:layout_above="@+id/bta"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="#e2e2e2">
-                            <LinearLayout
-
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-
-
-                                >
+                                android:layout_height="match_parent">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:background="#FFFFFF">
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
 
-                                <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="20dp"
-                                android:text="호텔이름"
-                                android:layout_marginTop="8dp"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="20dp"
-                                android:text="호텔 주소"
-                                android:textSize="15sp"
-                                android:layout_marginTop="8dp"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="20dp"
-                                android:text="가까운역"
-                                android:textSize="12sp"
-                                android:layout_marginTop="8dp"/>
-                                </LinearLayout>
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp"
-                                android:src="@drawable/gps"
-                                android:scaleType="fitXY"/>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="90dp"
-                                    android:background="#FFFFFF"
-                                    android:orientation="horizontal"
-                                    >
                                     <LinearLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical">
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="1">
-                                            <TextView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:text="운영시간"
-                                                android:gravity="center_vertical"/>
-                                        </LinearLayout>
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="2"
-                                            android:orientation="horizontal"
-                                            android:layout_marginLeft="2dp">
-                                            <LinearLayout
-                                                android:layout_width="3dp"
-                                                android:layout_height="match_parent"
-                                                android:background="#00bfff"
-                                                android:layout_marginLeft="5dp"></LinearLayout>
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:gravity="center"
-                                                android:orientation="vertical"
-                                                android:layout_marginLeft="2dp">
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="10sp"
-                                                    android:text="평일"/>
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="10sp"
-                                                    android:text="오전 10:00 ~ 오후 6:00"/>
-                                            </LinearLayout>
-                                        </LinearLayout>
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="0.5"></LinearLayout>
-
-
-
-                                    </LinearLayout>
-                                    
-                                    <LinearLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical"
-                                        >
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="1">
-                                            <TextView
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:gravity="center_vertical"/>
-                                        </LinearLayout>
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="2"
-                                            android:orientation="horizontal"
-                                            android:layout_marginLeft="2dp">
-                                            <LinearLayout
-                                                android:layout_width="3dp"
-                                                android:layout_height="match_parent"
-                                                android:background="#00bfff"
-                                                android:layout_marginLeft="5dp"></LinearLayout>
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:gravity="center"
-                                                android:orientation="vertical"
-                                                android:layout_marginLeft="2dp">
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="10sp"
-                                                    android:text="주말"/>
-                                                <TextView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:textSize="10sp"
-                                                    android:text="오전 10:00 ~ 오후 6:00"/>
-                                            </LinearLayout>
-                                        </LinearLayout>
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="0dp"
-                                            android:layout_weight="0.5"></LinearLayout>
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:background="#aaaaaa"></LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="80dp"
-                                    android:layout_marginTop="8dp"
-                                    android:orientation="vertical"
-                                    android:background="#FFFFFF">
-                                    <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="서비스 안내"
-                                        android:gravity="center_vertical"/>
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="16dp"
+                                            android:text="해피테일 애견호텔"
+                                            android:textColor="#000000"
+                                            android:textSize="12sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="17dp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="8dp"
+                                            android:text="다년간의 훈련경험을 토대로 틀에 박힌 보여주기 식의 훈련이 아닌 반려견과 보호자가 공존하는데 반드시 필요한 실생활 중심의 훈련으로 반려견을 보호자 인생의 가장 멋진 벗으로 만들어 드리겠습니다."
+                                            android:textColor="#a0a0a0"
+                                            android:textSize="11sp" />
+                                    </LinearLayout>
+
+
                                     <LinearLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:gravity="center">
-                                        <Button
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
-                                            android:background="#00bfff"
-                                            android:text="와이파이"
-                                            android:textColor="#FFFFFF"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="12dp"
+                                            android:text="영업시간"
+                                            android:textColor="#000000"
                                             android:textSize="12sp"
-                                            />
-                                        <Button
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
-                                            android:background="#aaaaaa"
-                                            android:textColor="#FFFFFF"
-                                            android:text="카톡알림"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="10dp"
+                                            android:text="평일(월요일~금요일) 8:00AM - 10:00PM\n주말(토요일~일요일) 9:00AM - 10:00PM"
+                                            android:textColor="#a0a0a0"
+                                            android:textSize="11sp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="13dp"
+                                            android:text="위치"
+                                            android:textColor="#000000"
                                             android:textSize="12sp"
-                                            android:layout_marginLeft="3dp"/>
-                                        <Button
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
-                                            android:text="픽업서비스"
-                                            android:textColor="#FFFFFF"
-                                            android:background="#aaaaaa"
+                                            android:textStyle="bold" />
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="88dp"
+                                            android:layout_marginTop="18dp"
+                                            android:scaleType="fitXY"
+                                            android:src="@drawable/gps" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="11dp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="18dp"
+                                            android:text="서울특별시 양천구 목동동로 339 목동트윈빌아파트 215호"
+                                            android:textColor="#a0a0a0"
+                                            android:textSize="10sp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="11dp"
+                                            android:text="영업시간"
+                                            android:textColor="#000000"
                                             android:textSize="12sp"
-                                            android:layout_marginLeft="3dp"
-                                            />
-                                        <Button
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
-                                            android:text="미용가능"
-                                            android:textColor="#FFFFFF"
-                                            android:background="#aaaaaa"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="12dp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="17dp"
+                                            android:text="체크아웃 - 12:00pm (12:00pm이후에 픽업 시 유치원 요금 부과)
+금액 - 20,000
+형제자매견 - 17,000
+(7~20nights)-18,000원
+형제자매견-15,000원
+(21+nights)-15,000원
+형제자매견-12,000원
+8:00pm이후-시간당 3,000원의 추가시간요금이 부과"
+                                            android:textColor="#a0a0a0"
+                                            android:textSize="11sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="12dp"
+                                            android:text="서비스"
+                                            android:textColor="#000000"
                                             android:textSize="12sp"
-                                            android:layout_marginLeft="3dp"/>
+                                            android:textStyle="bold" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:layout_marginBottom="11dp">
+                                        <LinearLayout
+                                            android:layout_width="24dp"
+                                            android:layout_height="35dp"
+                                            android:weightSum="35"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginLeft="16dp">
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0dp"
+                                                android:layout_weight="24"
+                                                android:src="@drawable/spickup"
+                                                android:scaleType="fitXY"/>
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0dp"
+                                                android:layout_weight="11"
+                                                android:text="픽업"
+                                                android:textSize="9sp"
+                                                android:gravity="center_horizontal"></TextView>
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="24dp"
+                                            android:layout_height="35dp"
+                                            android:weightSum="35"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginLeft="16dp">
+                                            <ImageView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0dp"
+                                                android:layout_weight="24"
+                                                android:src="@drawable/sbath"
+                                                android:scaleType="fitXY"/>
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0dp"
+                                                android:layout_weight="11"
+                                                android:text="목욕"
+                                                android:textSize="9sp"
+                                                android:gravity="center_horizontal"></TextView>
+                                        </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="24dp"
+                                                android:layout_height="35dp"
+                                                android:weightSum="35"
+                                                android:orientation="vertical"
+                                                android:layout_marginTop="8dp"
+                                                android:layout_marginLeft="16dp">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="24"
+                                                    android:src="@drawable/straining"
+                                                    android:scaleType="fitXY"/>
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="11"
+                                                    android:text="훈련"
+                                                    android:textSize="9sp"
+                                                    android:gravity="center_horizontal"></TextView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="24dp"
+                                                android:layout_height="35dp"
+                                                android:weightSum="35"
+                                                android:orientation="vertical"
+                                                android:layout_marginTop="8dp"
+                                                android:layout_marginLeft="16dp">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="24"
+                                                    android:src="@drawable/shairshop"
+                                                    android:scaleType="fitXY"/>
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="11"
+                                                    android:text="미용"
+                                                    android:textSize="9sp"
+                                                    android:gravity="center_horizontal"></TextView>
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="24dp"
+                                                android:layout_height="35dp"
+                                                android:weightSum="35"
+                                                android:orientation="vertical"
+                                                android:layout_marginTop="8dp"
+                                                android:layout_marginLeft="16dp">
+                                                <ImageView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="24"
+                                                    android:src="@drawable/scctv"
+                                                    android:scaleType="fitXY"/>
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="0dp"
+                                                    android:layout_weight="11"
+                                                    android:text="CCTV"
+                                                    android:textSize="9sp"
+                                                    android:gravity="center_horizontal"></TextView>
+                                            </LinearLayout>
+                                        </LinearLayout>
 
                                     </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:background="#FFFFFF"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="12dp"
+                                            android:text="규정"
+                                            android:textColor="#000000"
+                                            android:textSize="12sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="21dp"
+                                            android:layout_marginTop="9dp"
+                                            android:text="반려견들은 해피테일에서 하루 종일 리드줄 없이 놀기 때문에 이러한 환경에 적합한지를 확인하기 위해 각각의 반려견에게 평가를 요구합니다. 그러므로, 반려견들은 호텔에 입소하기 전에 적어도 반나절의 유치원을 이용해야 합니다."
+                                            android:textColor="#a0a0a0"
+                                            android:textSize="11sp" />
+                                    </LinearLayout>
+                                    
+                                    <Button
+                                        android:layout_width="match_parent"
+                                        android:layout_height="48dp"
+                                        android:background="#ef5350"
+                                        android:text="전화하기"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="15sp"/>
+
+
+
                                 </LinearLayout>
-
-                            </LinearLayout>
+                                
                             </ScrollView>
+                        </LinearLayout>
 
-                            <Button
-                                android:id="@+id/bta"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:layout_alignParentBottom="true"
-                                android:text="전화하기"
-                                android:textColor="#FFFFFF"
-                                android:background="@android:color/holo_red_light" />
-
-                        </RelativeLayout>
 
                         <LinearLayout
                             android:id="@+id/tab2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:background="#eeeeee">
+
                             <ScrollView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-                            <include layout="@layout/cell_talk_layout"/>
-                            <include layout="@layout/cell_talk_layout"/>
-                                <include layout="@layout/cell_talk_layout"/>
-                                <include layout="@layout/cell_talk_layout"/>
-                                <include layout="@layout/cell_talk_layout"/>
-                            </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    >
+
+                                    <include layout="@layout/cell_talk_layout"/>
+                                    <include layout="@layout/cell_talk_layout"/>
+                                    <include layout="@layout/cell_talk_layout"/>
+                                    <include layout="@layout/cell_talk_layout"/>
+                                    <include layout="@layout/cell_talk_layout"/>
+
+                                </LinearLayout>
                             </ScrollView>
 
                         </LinearLayout>
+
 
                     </FrameLayout>
                 </LinearLayout>

@@ -53,11 +53,35 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="304"
+                    android:layout_weight="252"
                     android:gravity="center_vertical"
                     android:text="필터"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:src="@drawable/filterone"
+                    android:background="#00000000"
+                    android:scaleType="fitXY"
+                    android:padding="8dp"
+                    android:id="@+id/filterimg"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="48"
+                    android:visibility="gone"
+                    android:text="완료"
+                    android:textSize="15sp"
+                    android:textColor="#ef5350"
+                    android:id="@+id/filtertv"
+                    android:gravity="center"
+                    />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"></LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -69,11 +93,13 @@
 
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="560"
                 android:orientation="vertical"
+                android:weightSum="560"
                 >
 
                 <LinearLayout
@@ -124,7 +150,10 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/themebtn1"
+                        android:onClick="themebtn">
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -178,7 +207,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/themebtn2"
+                        android:onClick="themebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -230,7 +261,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/themebtn3"
+                        android:onClick="themebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -282,7 +315,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/themebtn4"
+                        android:onClick="themebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -395,7 +430,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/pricebtn1"
+                        android:onClick="pricebtn">
 
                         <TextView
                             android:id="@+id/textView"
@@ -415,7 +452,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/pricebtn2"
+                        android:onClick="pricebtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -432,7 +471,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/pricebtn3"
+                        android:onClick="pricebtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -449,7 +490,9 @@
                         android:layout_weight="86"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/pricebtn4"
+                        android:onClick="pricebtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -526,7 +569,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/weightbtn1"
+                        android:onClick="weightbtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -545,7 +590,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/weightbtn2"
+                        android:onClick="weightbtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -562,7 +609,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="86">
+                        android:weightSum="86"
+                        android:id="@+id/weightbtn3"
+                        android:onClick="weightbtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -579,7 +628,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/weightbtn4"
+                        android:onClick="weightbtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -596,7 +647,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/weightbtn5"
+                        android:onClick="weightbtn">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -624,22 +677,24 @@
                     android:layout_weight="0.5"
                     android:background="#a0a0a0"></LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="7"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="13"
+                    android:layout_weight="33"
                     android:orientation="horizontal"
-                    android:weightSum="360">
+                    android:weightSum="360"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="13"></LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="100"
+                        android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -648,12 +703,56 @@
                         android:textColor="#434343"
                         android:textSize="11sp"
                         android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(3개 선택가능)"
+                        android:textColor="@color/com_facebook_messenger_blue"
+                        android:textSize="10sp"
+                        android:id="@+id/servicetv"
+                        />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="239"
+                        android:weightSum="33"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"></LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="23"
+                            android:weightSum="274"
+                            android:gravity="right">
+                            <Button
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="40"
+                                android:background="@drawable/button_filterling"
+                                android:text="RESET"
+                                android:textSize="7sp"
+                                android:textColor="#000000"
+                                android:id="@+id/resetbtn"
+                                android:onClick="servicebtn"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"></LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8"></LinearLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="16"></LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -673,7 +772,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn1"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -716,7 +817,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn2"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -757,7 +860,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn3"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -798,7 +903,10 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn4"
+                        android:onClick="servicebtn"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -839,7 +947,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn5"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -898,7 +1008,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn6"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -941,7 +1053,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn7"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -982,7 +1096,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn8"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1023,7 +1139,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn9"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1064,7 +1182,9 @@
                         android:layout_weight="69"
                         android:background="@drawable/button_filterling"
                         android:orientation="vertical"
-                        android:weightSum="69">
+                        android:weightSum="69"
+                        android:id="@+id/servicebtn10"
+                        android:onClick="servicebtn">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1105,14 +1225,7 @@
                         android:layout_weight="8"></LinearLayout>
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/bta"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_alignParentBottom="true"
-                    android:background="@android:color/holo_red_light"
-                    android:text="전화하기"
-                    android:textColor="#FFFFFF" />
+
             </LinearLayout>
 
 

@@ -1,50 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp">
+    android:layout_margin="5dp"
+    android:layout_marginBottom="8dp"
+    android:background="#FFFFFF">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#999999">
+        android:weightSum="360"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="16"></LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="328"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            android:background="#ffffff">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/profile"
-                android:layout_margin="4dp"
-
-                android:id="@+id/profile"/>
+            android:layout_height="wrap_content">
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="3dp"
-                android:text="댓글 입력"
-                android:id="@+id/nickname"
-                android:layout_weight="1"/>
-
-
-            <ImageButton
-                android:id="@+id/likeBtn"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:background="#00000000"
-                app:srcCompat="@android:drawable/presence_invisible" />
+                android:textSize="16sp"
+                android:text="dudqls3281"
+                android:textColor="#000000"
+                android:layout_marginTop="32dp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="13dp"
+                android:text="2017.08.24"
+                android:textColor="#a0a0a0"
+                android:textSize="13sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right|bottom">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/threedot" />
+            </LinearLayout>
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#a0a0a0"
+            android:textSize="13sp"
+            android:text="위생이 깔끔해서 좋고 기본적으로 픽업이 되어서 반려견 종종 맡기는 편입니다."
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="자세히 보기"
+            android:textColor="#a0a0a0"
+            android:layout_marginBottom="16dp"
+            />
 
-
-
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="16"></LinearLayout>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
