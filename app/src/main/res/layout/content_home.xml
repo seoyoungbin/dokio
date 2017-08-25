@@ -9,6 +9,8 @@
     android:background="#e2e2e2">
 
 
+
+
     <com.dokio.tacademy.pedokio.BannerLayout
         android:id="@+id/banner"
         android:layout_width="match_parent"

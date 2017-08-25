@@ -3,6 +3,7 @@ package com.dokio.tacademy.pedokio;
 import android.app.Application;
 import android.content.Context;
 
+import com.dokio.tacademy.pedokio.net.Net;
 import com.kakao.auth.ApprovalType;
 import com.kakao.auth.AuthType;
 import com.kakao.auth.IApplicationConfig;
@@ -23,7 +24,8 @@ public class DokioApplication extends Application
     public void onCreate() {
         super.onCreate();
         self = this;
-
+// 레트로핏 초기화
+        Net.getInstance().launch(this);
         // kakao
         KakaoSDK.init(new KakaoSDKAdapter());
 

@@ -1,25 +1,25 @@
 package com.dokio.tacademy.pedokio.model;
 
-public class HairModel
+public class ListModel
 {
-    int img;
+    String img;
     String title;
     String address;
 
-    public HairModel() {
+    public ListModel() {
     }
 
-    public HairModel(int img, String title, String address) {
+    public ListModel(String img, String title, String address) {
         this.img = img;
         this.title = title;
         this.address = address;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
