@@ -14,6 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="163"
+        android:id="@+id/searchlist"
         >
 
     <ImageView
@@ -101,7 +102,8 @@
             android:layout_height="match_parent"
             android:layout_weight="57"
             android:src="@drawable/callbtn"
-            android:background="#00000000"></ImageButton>
+            android:background="#00000000"
+            android:id="@+id/callbtn"></ImageButton>
     </LinearLayout>
     </LinearLayout>
 

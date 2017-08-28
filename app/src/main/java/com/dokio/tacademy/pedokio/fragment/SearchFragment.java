@@ -8,12 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.dokio.tacademy.pedokio.FilterActivity;
 import com.dokio.tacademy.pedokio.R;
-import com.dokio.tacademy.pedokio.SearchViewActivity;
 
 /**
  * Created by Adib on 13-Apr-17.
@@ -22,8 +20,7 @@ import com.dokio.tacademy.pedokio.SearchViewActivity;
 public class SearchFragment extends Fragment {
 
     private AppCompatActivity activity;
-    ImageButton search;
-    Button filterbtn;
+    ImageButton filterbtn;
 
     private OnFragmentInteractionListener listener;
 
@@ -41,15 +38,9 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar2);
         activity = ((AppCompatActivity) getActivity());
-        search = (ImageButton) view.findViewById(R.id.searchimg);
-        filterbtn = (Button) view.findViewById(R.id.filterbtn);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(activity, SearchViewActivity.class);
-                startActivity(intent);
-            }
-        });
+        filterbtn = (ImageButton) view.findViewById(R.id.filterbtn);
+
+
 
         filterbtn.setOnClickListener(new View.OnClickListener() {
             @Override
