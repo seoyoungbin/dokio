@@ -7,5 +7,6 @@
     <color name="colorBackground">#F8F8F8</color>
     <color name="colorNavAccentSelected">#ef5350</color>
     <color name="colorNavAccentUnselected">#000000</color>
+    <color name="btncolor">#ef5350</color>
 
 </resources>
