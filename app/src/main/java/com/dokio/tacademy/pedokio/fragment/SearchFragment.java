@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,33 +20,47 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dokio.tacademy.pedokio.DetailActivity;
 import com.dokio.tacademy.pedokio.FilterActivity;
 import com.dokio.tacademy.pedokio.GpsDetectService;
 import com.dokio.tacademy.pedokio.R;
 import com.dokio.tacademy.pedokio.SearchViewActivity;
 import com.dokio.tacademy.pedokio.U;
+import com.dokio.tacademy.pedokio.model.ListModel;
+import com.dokio.tacademy.pedokio.model.SearchListResRootModel;
+import com.dokio.tacademy.pedokio.net.NetProcess;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import static android.os.Build.VERSION_CODES.M;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -53,16 +69,25 @@ import static android.os.Build.VERSION_CODES.M;
 
 public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
+    MapListAdapter MapListAdapter;
+    ArrayList<ListModel> data;
     private GoogleMap mMap;
     MapView mapView;
     private AppCompatActivity activity;
-    ImageButton filterbtn, searchbtn, gpsbtn;
+    ImageButton filterbtn, searchbtn, gpsbtn, callbtn;
     int flagGpsStatus;              // 0:그냥 액티비티 구동되면 1:gps를 설정을 타고 돌아오면
-    TextView addr;
+    TextView addr, markercount, buildingtv, tv1, tv2, tv3, searchx;
     boolean isFirstGpsLoad;         // gps가 최초로 로딩되어 좌표값을 획득했는가?
     LatLng myLoc;
     List<Address> addresses;
     double lat,lng;
+    Button hotelbtn, cafebtn, hospitalbtn;
+    RecyclerView MapRecyclerView;
+    String[] title,address,tel;
+    int[] _id;
+    LinearLayout searchlist;
+    boolean rvalid = false;
+
 
     private OnFragmentInteractionListener listener;
 
@@ -84,15 +109,82 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         searchbtn = (ImageButton) view.findViewById(R.id.searchbtn);
         addr = (TextView) view.findViewById(R.id.addr);
         gpsbtn = (ImageButton) view.findViewById(R.id.gpsbtn);
+        hotelbtn = (Button) view.findViewById(R.id.hotelbtn);
+        cafebtn = (Button) view.findViewById(R.id.cafebtn);
+        hospitalbtn = (Button) view.findViewById(R.id.hospitalbtn);
+        markercount = (TextView) view.findViewById(R.id.markercount);
+        buildingtv = (TextView) view.findViewById(R.id.buildingtv);
+        tv1 = (TextView) view.findViewById(R.id.tv1);
+        tv2 = (TextView) view.findViewById(R.id.tv2);
+        tv3 = (TextView) view.findViewById(R.id.tv3);
+        searchx = (TextView) view.findViewById(R.id.searchx);
+        MapRecyclerView = (RecyclerView) view.findViewById(R.id.MapRecyclerView);
+        data = new ArrayList<>();
+
 
         // 지도를 소유하고 있는 플레그먼트 획득
         mapView = (MapView) view.findViewById(R.id.imap);
 
 
         // 버스 등록
+        NetProcess.getInstance().getNetBus().register(this);
         U.getInstance().getGpsBus().register(this);
 
         checkGpsOn();
+
+        hotelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NetProcess.getInstance().netCategoryMap("호텔",lat,lng);
+                buildingtv.setText("호텔");
+                tv1.setVisibility(View.VISIBLE);
+                tv2.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                tv3.setText("이 검색 되었습니다.");
+                buildingtv.setVisibility(View.VISIBLE);
+                markercount.setVisibility(View.VISIBLE);
+                searchx.setVisibility(View.GONE);
+                hotelbtn.setBackgroundColor(Color.parseColor("#ff5252"));
+                cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+
+            }
+        });
+        cafebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NetProcess.getInstance().netCategoryMap("카페",lat,lng);
+                buildingtv.setText("카페");
+                tv1.setVisibility(View.VISIBLE);
+                tv2.setVisibility(View.VISIBLE);
+                tv3.setText("가 검색 되었습니다.");
+                tv3.setVisibility(View.VISIBLE);
+                buildingtv.setVisibility(View.VISIBLE);
+                markercount.setVisibility(View.VISIBLE);
+                searchx.setVisibility(View.GONE);
+                hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                cafebtn.setBackgroundColor(Color.parseColor("#fdb72f"));
+                hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+            }
+        });
+
+        hospitalbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NetProcess.getInstance().netCategoryMap("병원",lat,lng);
+                buildingtv.setText("병원");
+                tv3.setText("이 검색 되었습니다.");
+                tv1.setVisibility(View.VISIBLE);
+                tv2.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                buildingtv.setVisibility(View.VISIBLE);
+                markercount.setVisibility(View.VISIBLE);
+                searchx.setVisibility(View.GONE);
+                hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                hospitalbtn.setBackgroundColor(Color.parseColor("#4ab5f9"));
+            }
+        });
 
         searchbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,18 +208,31 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View view) {
                 addr.setText(addresses.get(0).getAddressLine(0).toString() );
                 mMap.clear();
-                MapMarker(lat,lng);
+                MapMarker(lat,lng,"내 위치",0);
+                tv1.setVisibility(View.GONE);
+                tv2.setVisibility(View.GONE);
+                tv3.setVisibility(View.GONE);
+                buildingtv.setVisibility(View.GONE);
+                markercount.setVisibility(View.GONE);
+                searchx.setText("내 위치가 검색되었습니다.");
+                searchx.setVisibility(View.VISIBLE);
+                hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
             }
         });
 
         return view;
     }
 
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         // 버스 해지
         U.getInstance().getGpsBus().unregister(this);
+                NetProcess.getInstance().getNetBus().unregister(this);
     }
 
     @Override
@@ -373,11 +478,17 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                LatLng markerloc = new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
+                aniMoveCamera(markerloc);
+                marker.showInfoWindow();
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                return true;
+            }
+        });
+
 
     }
 
@@ -387,12 +498,310 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
-    public void MapMarker(double lat, double lng)
+    public void MapMarker(double lat, double lng, String name, int pos)
     {
-        LatLng myloc = new LatLng(lat, lng);
-        mMap.addMarker(new MarkerOptions().position(myloc).title("내 위치"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
-        aniMoveCamera(myloc);
+        if (pos == 0)
+        {
+            LatLng myloc = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
+        }
+        else if (pos==1) {
+            LatLng myloc = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_marker)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
+        }
+        else if(pos==2){
+            LatLng myloc = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_marker)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
+        }
+        else{
+            LatLng myloc = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital_marker)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
+        }
+
     }
+
+    public class MapListAdapter extends RecyclerView.Adapter {
+        ArrayList<ListModel> data;
+
+        public MapListAdapter(ArrayList<ListModel> data) {
+            this.data = data;
+        }
+
+        @Override
+        public MapListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_search_layout, parent, false);
+            return new MapListViewHolder(item);
+        }
+
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+            ListModel ListModel = data.get(position);
+            MapListViewHolder MapListViewHolder = (MapListViewHolder) holder;
+
+            MapListViewHolder.title.setText("" + ListModel.getTitle());
+            MapListViewHolder.address.setText("" + ListModel.getAddress());
+            //MapListViewHolder.image.setImageDrawable(getResources().getDrawable(R.drawable.dog));
+            Picasso.with(activity)
+                    .load(ListModel.getImg())
+                    .into(MapListViewHolder.image);
+            callbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tel[position]));
+                    startActivity(intent);
+
+                }
+            });
+
+            searchlist.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+                    intent.putExtra("_id",_id[position]);
+                    startActivity(intent);
+                }
+            });
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return data.size();
+        }
+    }
+
+
+    public class MapListViewHolder extends RecyclerView.ViewHolder {
+
+        TextView title, address;
+        ImageView image;
+
+        public MapListViewHolder(View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.searchListTitle);
+            address = (TextView) itemView.findViewById(R.id.searchListAddress);
+            image = (ImageView) itemView.findViewById(R.id.advi);
+            callbtn = (ImageButton) itemView.findViewById(R.id.callbtn);
+            searchlist = (LinearLayout) itemView.findViewById(R.id.searchlist);
+
+        }
+
+
+    }
+
+    // 통신 결과 응답 (통신이 끝나면 자동으로 호출된다)
+    @Subscribe
+    public void onNetResponse(SearchListResRootModel res) {
+
+        // 오류 처리
+        if (res.getSuccess_code() <= 0) {
+            // 팝업 처리
+            Log.i("T", "통신실패");
+            return;
+        }
+        // 성공 처리
+        switch (res.getTr()) {
+            case "mobile_category_hotel": // 회원 가입후 처리!!
+            {
+                Log.i("T","통신결과: "+res.getResult().size());
+                // 상세 정보는 각자 해보시기 바랍니다.!!
+                //Log.i("T", "통신결과" + res.getResult().get(0).getWedo().getLat());
+                mMap.clear();
+                markercount.setText(res.getResult().size() + "개");
+                for (int i = 0; i < res.getResult().size(); i++) {
+                    MapMarker(res.getResult().get(i).getWedo().getLat(), res.getResult().get(i).getWedo().getLon(), res.getResult().get(i).getName(), 1);
+                }
+
+
+
+                if(rvalid == false) {
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    // 방향
+                    MapRecyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+                    // 아답터 (뷰홀더, 데이터 설정연결, 이벤트등등..)
+                    MapListAdapter = new MapListAdapter(data);
+                    // 연결
+                    MapRecyclerView.setAdapter(MapListAdapter);
+                    rvalid = true;
+                }
+
+                else if(rvalid == true) {
+
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    data.clear();
+                    MapListAdapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    MapListAdapter.notifyDataSetChanged();
+
+                }
+
+
+            }
+            break;
+
+            case "mobile_category_cafe": // 회원 가입후 처리!!
+            {
+                // 상세 정보는 각자 해보시기 바랍니다.!!
+                //Log.i("T", "통신결과" + res.getResult().get(0).getWedo().getLat());
+                mMap.clear();
+                markercount.setText(res.getResult().size()+"개");
+                for(int i = 0;i<res.getResult().size();i++){
+                    MapMarker(res.getResult().get(i).getWedo().getLat(),res.getResult().get(i).getWedo().getLon(),res.getResult().get(i).getName(),2);
+                }
+
+                if(rvalid == false) {
+
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    // 방향
+                    MapRecyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+                    // 아답터 (뷰홀더, 데이터 설정연결, 이벤트등등..)
+                    MapListAdapter = new MapListAdapter(data);
+                    // 연결
+                    MapRecyclerView.setAdapter(MapListAdapter);
+                    rvalid = true;
+                }
+
+                else if(rvalid == true) {
+
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    data.clear();
+                    MapListAdapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    MapListAdapter.notifyDataSetChanged();
+
+                }
+
+
+            }
+            break;
+
+            case "mobile_category_hospital": // 회원 가입후 처리!!
+            {
+                // 상세 정보는 각자 해보시기 바랍니다.!!
+                //Log.i("T", "통신결과" + res.getResult().get(0).getWedo().getLat());
+
+                mMap.clear();
+                markercount.setText(res.getResult().size()+"개");
+                for(int i = 0;i<res.getResult().size();i++){
+                    MapMarker(res.getResult().get(i).getWedo().getLat(),res.getResult().get(i).getWedo().getLon(),res.getResult().get(i).getName(),3);
+                }
+
+                if(rvalid == false) {
+
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    // 방향
+                    MapRecyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+                    // 아답터 (뷰홀더, 데이터 설정연결, 이벤트등등..)
+                    MapListAdapter = new MapListAdapter(data);
+                    // 연결
+                    MapRecyclerView.setAdapter(MapListAdapter);
+                    rvalid = true;
+                }
+
+                else if(rvalid == true) {
+
+                    title = new String[res.getResult().size()];
+                    address = new String[res.getResult().size()];
+                    tel = new String[res.getResult().size()];
+                    _id = new int[res.getResult().size()];
+
+                    data.clear();
+                    MapListAdapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < res.getResult().size(); i++) {
+                        title[i] = res.getResult().get(i).getName();
+                        address[i] = res.getResult().get(i).getAddress();
+                        tel[i] = res.getResult().get(i).getPhonenumber();
+                        _id[i] = res.getResult().get(i).get_id();
+                    }
+
+                    for (int i = 0; i < res.getResult().size(); i++)
+                        data.add(new ListModel(res.getResult().get(i).getImg_url().get(0), title[i], address[i]));
+
+                    MapListAdapter.notifyDataSetChanged();
+
+                }
+
+
+            }
+            break;
+        }
+    }
+
 
 }

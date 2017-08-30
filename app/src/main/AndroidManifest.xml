@@ -3,6 +3,7 @@
     package="com.dokio.tacademy.pedokio">
 
 
+    <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- gps checking -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

@@ -186,6 +186,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="10"></LinearLayout>
             <Button
+                android:id="@+id/hotelbtn"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="50"
@@ -213,6 +214,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="10"></LinearLayout>
             <Button
+                android:id="@+id/cafebtn"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="50"
@@ -240,6 +242,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="10"></LinearLayout>
             <Button
+                android:id="@+id/hospitalbtn"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="50"
@@ -330,44 +333,63 @@
                             android:layout_height="match_parent"
                             android:layout_weight="310">
                             <TextView
+                                android:id="@+id/searchx"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:textColor="#434343"
+                                android:text="검색 결과가 없습니다."
+                                />
+                            <TextView
+                                android:id="@+id/tv1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textSize="10sp"
                                 android:textColor="#434343"
                                 android:text="총 "
+                                android:visibility="gone"
                                 />
                             <TextView
+                                android:id="@+id/markercount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textSize="10sp"
                                 android:textColor="#ff5252"
-                                android:text="3개"
+                                android:text="0개"
+                                android:visibility="gone"
                                 />
                             <TextView
+                                android:id="@+id/tv2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textSize="10sp"
                                 android:textColor="#434343"
                                 android:text="의 "
+                                android:visibility="gone"
                                 />
                             <TextView
+                                android:id="@+id/buildingtv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textSize="10sp"
                                 android:textColor="#434343"
                                 android:text="호텔"
+                                android:visibility="gone"
                                 />
                             <TextView
+                                android:id="@+id/tv3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textSize="10sp"
                                 android:textColor="#434343"
                                 android:text="이 검색 되었습니다."
+                                android:visibility="gone"
                                 />
                         </LinearLayout>
                         <ImageView
@@ -404,7 +426,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="9dp">
-            <include layout="@layout/cell_search_layout"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/MapRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
 
