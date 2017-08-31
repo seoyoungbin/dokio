@@ -50,10 +50,10 @@ public class HomeFragment extends Fragment {
 
         final List<String> urls = new ArrayList<>();
         urls.add("https://dokio2.s3.ap-northeast-2.amazonaws.com/glory_animal.PNG");
-        urls.add("http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg");
-        urls.add("http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg");
-        urls.add("http://img4.imgtn.bdimg.com/it/u=1030604573,1579640549&fm=23&gp=0.jpg");
-        urls.add("http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
+        urls.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EB%A6%AC%EC%96%BC%ED%97%88%EB%B8%8C_%EC%8B%9C%EC%84%A47.PNG");
+        urls.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EC%95%84%EB%9D%A0%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90_%EC%8B%9C%EC%84%A46.jpeg");
+        urls.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EA%B9%80%EB%AF%BC%EC%84%B1%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90_%EC%8B%9C%EC%84%A46.jpg");
+        urls.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/POPO%26MIRU_%ED%99%9C%EB%8F%992.jpg");
         bannerLayout.setImageLoader(new GlideImageLoader());
         bannerLayout.setViewUrls(urls);
         return view;

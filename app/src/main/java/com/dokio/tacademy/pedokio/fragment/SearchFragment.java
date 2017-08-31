@@ -69,12 +69,15 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
+    public static final int REQEUST_CODE = 1004;
+    public static final int RESULT_CODE = 2004;
+
     MapListAdapter MapListAdapter;
     ArrayList<ListModel> data;
     private GoogleMap mMap;
     MapView mapView;
     private AppCompatActivity activity;
-    ImageButton filterbtn, searchbtn, gpsbtn, callbtn;
+    ImageButton filterbtn, searchbtn, gpsbtn;
     int flagGpsStatus;              // 0:그냥 액티비티 구동되면 1:gps를 설정을 타고 돌아오면
     TextView addr, markercount, buildingtv, tv1, tv2, tv3, searchx;
     boolean isFirstGpsLoad;         // gps가 최초로 로딩되어 좌표값을 획득했는가?
@@ -85,8 +88,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     RecyclerView MapRecyclerView;
     String[] title,address,tel;
     int[] _id;
-    LinearLayout searchlist;
+
     boolean rvalid = false;
+    double[] Alat,Alng;
+    double rlat,rlng;
+    String name;
 
 
     private OnFragmentInteractionListener listener;
@@ -120,6 +126,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         searchx = (TextView) view.findViewById(R.id.searchx);
         MapRecyclerView = (RecyclerView) view.findViewById(R.id.MapRecyclerView);
         data = new ArrayList<>();
+
 
 
         // 지도를 소유하고 있는 플레그먼트 획득
@@ -190,7 +197,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, SearchViewActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQEUST_CODE);
             }
         });
 
@@ -225,7 +232,16 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         return view;
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQEUST_CODE && resultCode == RESULT_CODE){
+            rlat = data.getDoubleExtra("latitude", 0.0);
+            rlng = data.getDoubleExtra("longitude", 0.0);
+            name = data.getStringExtra("name");
+            MapMarker(rlat,rlng,name,4);
+        }
+    }
 
     @Override
     public void onDestroy() {
@@ -233,6 +249,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         // 버스 해지
         U.getInstance().getGpsBus().unregister(this);
                 NetProcess.getInstance().getNetBus().unregister(this);
+        rvalid = false;
     }
 
     @Override
@@ -484,6 +501,16 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 LatLng markerloc = new LatLng(marker.getPosition().latitude,marker.getPosition().longitude);
                 aniMoveCamera(markerloc);
                 marker.showInfoWindow();
+                for(int i = 0;i<data.size();i++)
+                {
+
+                    if(marker.getPosition().longitude==Alng[i]&&marker.getPosition().latitude==Alat[i]) {
+                        MapRecyclerView.smoothScrollToPosition(i);
+                    }
+
+                }
+
+
 
                 return true;
             }
@@ -513,12 +540,17 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         }
         else if(pos==2){
             LatLng myloc = new LatLng(lat, lng);
-            mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_marker)));
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.cafe_marker)));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
         }
-        else{
+        else if(pos==3){
             LatLng myloc = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital_marker)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
+        }
+        else if(pos==4){
+            LatLng myloc = new LatLng(lat, lng);
+            mMap.addMarker(new MarkerOptions().position(myloc).title(name));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
         }
 
@@ -545,24 +577,30 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
             MapListViewHolder.title.setText("" + ListModel.getTitle());
             MapListViewHolder.address.setText("" + ListModel.getAddress());
+            MapListViewHolder.searchlist.setTag(position);
+            MapListViewHolder.callbtn.setTag(position);
             //MapListViewHolder.image.setImageDrawable(getResources().getDrawable(R.drawable.dog));
             Picasso.with(activity)
                     .load(ListModel.getImg())
                     .into(MapListViewHolder.image);
-            callbtn.setOnClickListener(new View.OnClickListener() {
+            MapListViewHolder.callbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tel[position]));
+                    int pos = (int) view.getTag();
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tel[pos]));
                     startActivity(intent);
 
                 }
             });
 
-            searchlist.setOnClickListener(new View.OnClickListener() {
+            MapListViewHolder.searchlist.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View view) {
+                    int pos = (int) view.getTag();
                     Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
-                    intent.putExtra("_id",_id[position]);
+                    Log.i("T","통신결과3: "+pos);
+                    intent.putExtra("_id",_id[pos]);
                     startActivity(intent);
                 }
             });
@@ -580,6 +618,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
         TextView title, address;
         ImageView image;
+        LinearLayout searchlist;
+        ImageButton callbtn;
 
         public MapListViewHolder(View itemView) {
             super(itemView);
@@ -613,8 +653,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 //Log.i("T", "통신결과" + res.getResult().get(0).getWedo().getLat());
                 mMap.clear();
                 markercount.setText(res.getResult().size() + "개");
+
+                Alat = new double[res.getResult().size()];
+                Alng = new double[res.getResult().size()];
+
                 for (int i = 0; i < res.getResult().size(); i++) {
                     MapMarker(res.getResult().get(i).getWedo().getLat(), res.getResult().get(i).getWedo().getLon(), res.getResult().get(i).getName(), 1);
+                    Alat[i] = res.getResult().get(i).getWedo().getLat();
+                    Alng[i] = res.getResult().get(i).getWedo().getLon();
                 }
 
 
@@ -678,8 +724,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 //Log.i("T", "통신결과" + res.getResult().get(0).getWedo().getLat());
                 mMap.clear();
                 markercount.setText(res.getResult().size()+"개");
+
+                Alat = new double[res.getResult().size()];
+                Alng = new double[res.getResult().size()];
+
+
                 for(int i = 0;i<res.getResult().size();i++){
                     MapMarker(res.getResult().get(i).getWedo().getLat(),res.getResult().get(i).getWedo().getLon(),res.getResult().get(i).getName(),2);
+                    Alat[i] = res.getResult().get(i).getWedo().getLat();
+                    Alng[i] = res.getResult().get(i).getWedo().getLon();
                 }
 
                 if(rvalid == false) {
@@ -708,7 +761,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                     rvalid = true;
                 }
 
-                else if(rvalid == true) {
+                else if(rvalid == true)
+                {
 
                     title = new String[res.getResult().size()];
                     address = new String[res.getResult().size()];
@@ -718,7 +772,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                     data.clear();
                     MapListAdapter.notifyDataSetChanged();
 
-                    for (int i = 0; i < res.getResult().size(); i++) {
+                    for (int i = 0; i < res.getResult().size(); i++)
+                    {
                         title[i] = res.getResult().get(i).getName();
                         address[i] = res.getResult().get(i).getAddress();
                         tel[i] = res.getResult().get(i).getPhonenumber();
@@ -743,8 +798,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
 
                 mMap.clear();
                 markercount.setText(res.getResult().size()+"개");
+
+                Alat = new double[res.getResult().size()];
+                Alng = new double[res.getResult().size()];
+
+
                 for(int i = 0;i<res.getResult().size();i++){
                     MapMarker(res.getResult().get(i).getWedo().getLat(),res.getResult().get(i).getWedo().getLon(),res.getResult().get(i).getName(),3);
+                    Alat[i] = res.getResult().get(i).getWedo().getLat();
+                    Alng[i] = res.getResult().get(i).getWedo().getLon();
                 }
 
                 if(rvalid == false) {

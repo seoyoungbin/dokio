@@ -285,12 +285,15 @@
                                             android:textSize="12sp"
                                             android:textStyle="bold" />
 
-                                        <ImageView
+                                        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                                            xmlns:map="http://schemas.android.com/apk/res-auto"
+                                            xmlns:tools="http://schemas.android.com/tools"
+                                            android:id="@+id/dmap"
+                                            android:name="com.google.android.gms.maps.SupportMapFragment"
                                             android:layout_width="match_parent"
-                                            android:layout_height="88dp"
+                                            android:layout_height="150dp"
                                             android:layout_marginTop="18dp"
-                                            android:scaleType="fitXY"
-                                            android:src="@drawable/gps" />
+                                            tools:context="com.dokio.tacademy.pedokio.MapsActivity" />
 
                                         <TextView
                                             android:layout_width="match_parent"
@@ -514,7 +517,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
                                                     android:layout_weight="24"
-                                                    android:src="@drawable/scctv" />
+                                                    android:src="@drawable/dfood" />
                                                 <TextView
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
@@ -536,7 +539,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
                                                     android:layout_weight="24"
-                                                    android:src="@drawable/scctv" />
+                                                    android:src="@drawable/dswim" />
                                                 <TextView
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
@@ -558,7 +561,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
                                                     android:layout_weight="24"
-                                                    android:src="@drawable/scctv"
+                                                    android:src="@drawable/dcamera"
                                                     />
                                                 <TextView
                                                     android:layout_width="match_parent"
@@ -581,7 +584,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
                                                     android:layout_weight="24"
-                                                    android:src="@drawable/scctv" />
+                                                    android:src="@drawable/dwalk" />
                                                 <TextView
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
@@ -603,7 +606,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
                                                     android:layout_weight="24"
-                                                    android:src="@drawable/scctv" />
+                                                    android:src="@drawable/dshot" />
                                                 <TextView
                                                     android:layout_width="match_parent"
                                                     android:layout_height="0dp"
@@ -693,24 +696,78 @@
                             android:orientation="vertical"
                             android:background="#eeeeee">
 
-                            <ScrollView
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-
-                                <LinearLayout
+                                
+                                <android.support.v7.widget.RecyclerView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_above="@+id/submitlay"
+                                    android:id="@+id/talkRecycler"></android.support.v7.widget.RecyclerView>
+
+
+                                <LinearLayout
+                                    android:id="@+id/submitlay"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="48dp"
                                     android:orientation="vertical"
-                                    >
+                                    android:background="#e2e2e2"
+                                    android:weightSum="48"
+                                    android:layout_alignParentBottom="true">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="7"></LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="34"
+                                        android:orientation="horizontal"
+                                        android:weightSum="360">
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="10"></LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="340"
+                                            android:background="@drawable/submit_edit"
+                                            android:weightSum="340"
+                                            android:orientation="horizontal">
 
-                                    <include layout="@layout/cell_talk_layout"/>
-                                    <include layout="@layout/cell_talk_layout"/>
-                                    <include layout="@layout/cell_talk_layout"/>
-                                    <include layout="@layout/cell_talk_layout"/>
-                                    <include layout="@layout/cell_talk_layout"/>
+                                            <EditText
+                                                android:id="@+id/inputedit"
+                                                android:layout_marginLeft="2dp"
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="300"
+                                                android:background="@null"
+                                                android:textSize="12sp"/>
+                                            <Button
+                                                android:id="@+id/talksubmitbtn"
+                                                android:layout_width="0dp"
+                                                android:layout_height="match_parent"
+                                                android:layout_weight="40"
+                                                android:background="@drawable/submit_btn"
+                                                android:text="입력"
+                                                android:textColor="#FFFFFF"
+                                                android:textSize="10sp"/>
 
+                                        </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="10"></LinearLayout>
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="7"></LinearLayout>
                                 </LinearLayout>
-                            </ScrollView>
+                            </RelativeLayout>
+
 
                         </LinearLayout>
 

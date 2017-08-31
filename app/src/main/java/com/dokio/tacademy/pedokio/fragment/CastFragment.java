@@ -64,12 +64,12 @@ public class CastFragment extends Fragment {
     private void initLocalBanner() {
 
 
-        List<Integer> images = new ArrayList<>();
-        images.add(R.drawable.dog);
-        images.add(R.drawable.dogb);
-        images.add(R.drawable.dogc);
-        images.add(R.drawable.hoteli);
-        mBannerLocal.setImages(images);
+        List<String> images = new ArrayList<>();
+        images.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EC%A7%B1%EB%8F%85_%EC%83%81%EC%A3%BC%EA%B2%AC_%EA%B0%95%EB%83%89%EC%9D%B4.jpg");
+        images.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EC%9E%AC%EB%B0%A9%EC%86%A1%EC%A7%A4.PNG");
+        images.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EA%B1%B0%EB%85%B812.PNG");
+        images.add("https://s3.ap-northeast-2.amazonaws.com/dokio2/%EA%B1%B0%EB%85%B813.PNG");
+        mBannerLocal.setImagesUrl(images);
 
     }
 
