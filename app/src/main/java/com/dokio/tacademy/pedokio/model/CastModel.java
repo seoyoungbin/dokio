@@ -4,14 +4,15 @@ public class CastModel
 {
     String title1;
     String title2;
-    int img1;
-    int img2;
+    String img1;
+    String img2;
 
     public CastModel() {
 
     }
 
-    public CastModel(String title1, String title2, int img1, int img2) {
+
+    public CastModel(String title1, String title2, String img1, String img2) {
         this.title1 = title1;
         this.title2 = title2;
         this.img1 = img1;
@@ -34,20 +35,19 @@ public class CastModel
         this.title2 = title2;
     }
 
-    public int getImg1() {
+    public String getImg1() {
         return img1;
     }
 
-    public void setImg1(int img1) {
+    public void setImg1(String img1) {
         this.img1 = img1;
     }
 
-    public int getImg2() {
+    public String getImg2() {
         return img2;
     }
 
-    public void setImg2(int img2) {
+    public void setImg2(String img2) {
         this.img2 = img2;
     }
-
 }

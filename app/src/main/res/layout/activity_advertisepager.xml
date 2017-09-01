@@ -19,26 +19,20 @@
         android:layout_marginBottom="16dp"
         android:paddingLeft="8dp"/>
 
-    <HorizontalScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:layout_gravity="center_vertical"
-        android:id="@+id/hscroll">
-        <LinearLayout
+        android:paddingRight="4dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mAdvRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <include layout="@layout/cell_advertise_layout" />
-            <include layout="@layout/cell_advertise_layout" />
-            <include layout="@layout/cell_advertise_layout" />
-            <include layout="@layout/cell_advertise_layout" />
-
-        </LinearLayout>
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 
-    </HorizontalScrollView>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

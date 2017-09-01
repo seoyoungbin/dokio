@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:weightSum="616"
+    android:weightSum="560"
     android:orientation="vertical">
 
     <!-- <include
@@ -168,7 +168,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="70"
+        android:layout_weight="56"
         android:orientation="horizontal"
         android:weightSum="360">
         <LinearLayout
@@ -275,7 +275,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="546">
+        android:layout_weight="504">
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/imap"

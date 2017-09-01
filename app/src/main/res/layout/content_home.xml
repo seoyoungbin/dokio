@@ -31,9 +31,19 @@
 
     <include layout="@layout/activity_advertisepager"/>
 
-    <include layout="@layout/activity_advertise" />
-
-    <include layout="@layout/activity_advertiseb"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mRecycler"></android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/madvi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
 
 
 </LinearLayout>

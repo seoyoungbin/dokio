@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,11 @@ import android.widget.TextView;
 
 import com.dokio.tacademy.pedokio.R;
 import com.dokio.tacademy.pedokio.model.CastModel;
+import com.dokio.tacademy.pedokio.model.SearchListResRootModel;
+import com.dokio.tacademy.pedokio.net.NetProcess;
 import com.recker.flybanner.FlyBanner;
+import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,8 @@ public class CastFragment extends Fragment {
     CastAdapter CastAdapter;
     ArrayList<CastModel> data;
     RecyclerView recyclerView;
+    ArrayList<String> img_src;
+    ArrayList<String> title;
 
 
     public static CastFragment newInstance() {
@@ -40,24 +47,19 @@ public class CastFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         activity = ((AppCompatActivity) getActivity());
         mBannerLocal = (FlyBanner)view.findViewById(R.id.banner2);
+        img_src = new ArrayList<String>();
+        title = new ArrayList<String>();
 
         initLocalBanner();
 
+        NetProcess.getInstance().getNetBus().register(this);
+
+        NetProcess.getInstance().netCast();
+
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCast);
         data = new ArrayList<>();
-        // 방향
-        recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
-        // 아답터 (뷰홀더, 데이터 설정연결, 이벤트등등..)
-        CastAdapter = new CastAdapter(data);
-        // 연결
-        recyclerView.setAdapter(CastAdapter);
 
-        // 데이터 설정
-        // String title1, String title2, int img, int img2
-        data.add(new CastModel("반려견 잘 키우는 방법 3가지","수제간식 만드는 방법",R.drawable.dogc, R.drawable.dog));
-        data.add(new CastModel("반려견 잘 키우는 방법 3가지","수제간식 만드는 방법",R.drawable.dogc, R.drawable.dog));
-        data.add(new CastModel("반려견 잘 키우는 방법 3가지","수제간식 만드는 방법",R.drawable.dogc, R.drawable.dog));
-        data.add(new CastModel("반려견 잘 키우는 방법 3가지","수제간식 만드는 방법",R.drawable.dogc, R.drawable.dog));
+
         return view;
     }
 
@@ -91,10 +93,14 @@ public class CastFragment extends Fragment {
             CastModel castModel = data.get(position);
             CastViewHolder CastViewHolder = (CastViewHolder) holder;
 
-            CastViewHolder.title1.setText("" + castModel.getTitle1());
-            CastViewHolder.title2.setText("" + castModel.getTitle2());
-            CastViewHolder.img1.setImageResource(castModel.getImg1());
-            CastViewHolder.img2.setImageResource(castModel.getImg2());
+            CastViewHolder.title1.setText(castModel.getTitle1());
+            CastViewHolder.title2.setText(castModel.getTitle2());
+            Picasso.with(activity)
+                    .load(castModel.getImg1())
+                    .into(CastViewHolder.img1);
+            Picasso.with(activity)
+                    .load(castModel.getImg2())
+                    .into(CastViewHolder.img2);
         }
 
 
@@ -119,6 +125,51 @@ public class CastFragment extends Fragment {
         }
 
 
+    }
+
+    // 통신 결과 응답 (통신이 끝나면 자동으로 호출된다)
+    @Subscribe
+    public void onNetResponse(SearchListResRootModel res) {
+
+        // 오류 처리
+        if (res.getSuccess_code() <= 0) {
+            // 팝업 처리
+            Log.i("T", "통신실패");
+            return;
+        }
+        // 성공 처리
+        switch (res.getTr()) {
+            case "mobile_cast": // 회원 가입후 처리!!
+            {
+                // 상세 정보는 각자 해보시기 바랍니다.!!
+                Log.i("T", "통신결과: " + res.getResult().size());
+                for (int i=0; i<res.getResult().size(); i++) {
+                    title.add(res.getResult().get(i).getTitle());
+                    img_src.add(res.getResult().get(i).getCastimg());
+                }
+                for (int i=0; i<res.getResult().size();) {
+                    data.add(new CastModel(title.get(i), title.get(i+1), img_src.get(i), img_src.get(i+1)));
+                    i = i+2;
+                }
+
+                // 방향
+                recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
+                // 아답터 (뷰홀더, 데이터 설정연결, 이벤트등등..)
+                CastAdapter = new CastAdapter(data);
+                // 연결
+                recyclerView.setAdapter(CastAdapter);
+
+
+            }
+            break;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // 버스 해지
+        NetProcess.getInstance().getNetBus().unregister(this);
+        super.onDestroy();
     }
 
 }

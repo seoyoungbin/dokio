@@ -154,6 +154,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 hotelbtn.setBackgroundColor(Color.parseColor("#ff5252"));
                 cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                MapRecyclerView.setVisibility(View.VISIBLE);
 
             }
         });
@@ -172,6 +173,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 cafebtn.setBackgroundColor(Color.parseColor("#fdb72f"));
                 hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                MapRecyclerView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -190,6 +192,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 hospitalbtn.setBackgroundColor(Color.parseColor("#4ab5f9"));
+                MapRecyclerView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -198,6 +201,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View view) {
                 Intent intent = new Intent(activity, SearchViewActivity.class);
                 startActivityForResult(intent, REQEUST_CODE);
+
             }
         });
 
@@ -226,6 +230,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
                 hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+                MapRecyclerView.setVisibility(View.GONE);
             }
         });
 
@@ -236,10 +241,22 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQEUST_CODE && resultCode == RESULT_CODE){
+            mMap.clear();
             rlat = data.getDoubleExtra("latitude", 0.0);
             rlng = data.getDoubleExtra("longitude", 0.0);
             name = data.getStringExtra("name");
             MapMarker(rlat,rlng,name,4);
+            MapRecyclerView.setVisibility(View.GONE);
+            searchx.setText(name+" 검색되었습니다.");
+            hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+            cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+            hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
+            tv1.setVisibility(View.GONE);
+            tv2.setVisibility(View.GONE);
+            tv3.setVisibility(View.GONE);
+            buildingtv.setVisibility(View.GONE);
+            markercount.setVisibility(View.GONE);
+            searchx.setVisibility(View.VISIBLE);
         }
     }
 
