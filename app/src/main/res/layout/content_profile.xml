@@ -145,6 +145,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="16"></LinearLayout>
                 <LinearLayout
+                    android:id="@+id/petupload"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="76"

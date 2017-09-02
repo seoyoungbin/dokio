@@ -1,4 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+    }
+}
 
 android {
     compileSdkVersion 25
@@ -28,6 +38,14 @@ android {
     dataBinding {
         enabled = true
     }
+
+    productFlavors {
+    }
+    // 람다 처리 때문에 추가
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 
@@ -37,6 +55,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     // 65K
 
     //facebook 26.+ => 25.3.1 교체
@@ -75,6 +94,8 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:10.0.1'
     compile 'com.google.android.gms:play-services-auth:10.0.1'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.github.miguelbcr:RxPaparazzo:0.5.4-2.x'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 

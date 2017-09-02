@@ -1,5 +1,6 @@
 package com.dokio.tacademy.pedokio.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.dokio.tacademy.pedokio.PetUploadActivity;
 import com.dokio.tacademy.pedokio.R;
 
 /**
@@ -33,17 +35,17 @@ public class MyMenuFragment extends Fragment {
         activity = ((AppCompatActivity) getActivity());
 
 //        logoutbtn = (Button) view.findViewById(R.id.logoutbtn);
-//        petupload = (LinearLayout) view.findViewById(R.id.petupload);
+        petupload = (LinearLayout) view.findViewById(R.id.petupload);
 //        starbtn = (LinearLayout) view.findViewById(R.id.starbtn);
 //        memobtn = (LinearLayout) view.findViewById(R.id.memobtn);
 //
-//        petupload.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), PetUploadActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        petupload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PetUploadActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //        starbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

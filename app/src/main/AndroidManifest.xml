@@ -3,6 +3,7 @@
     package="com.dokio.tacademy.pedokio">
 
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- gps checking -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,6 +40,17 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+        <!-- 저장 경로에 대한 설정 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.file_provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rx_paparazzo_file_paths" />
+        </provider>
+
 
         <activity
             android:name=".SplashActivity"

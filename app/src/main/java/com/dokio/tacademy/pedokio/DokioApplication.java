@@ -10,6 +10,7 @@ import com.kakao.auth.IApplicationConfig;
 import com.kakao.auth.ISessionConfig;
 import com.kakao.auth.KakaoAdapter;
 import com.kakao.auth.KakaoSDK;
+import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo;
 
 /**
  * kako login, 65k (Dex...), camera paparazo(open source 등),
@@ -17,6 +18,8 @@ import com.kakao.auth.KakaoSDK;
 
 public class DokioApplication extends Application
 {
+
+    // 파파라조 라이브러리 등록
 
     // 동기화에 나오는 내용으로 최신 값을 항상 유지한다.
     static volatile DokioApplication self;
@@ -28,6 +31,7 @@ public class DokioApplication extends Application
         Net.getInstance().launch(this);
         // kakao
         KakaoSDK.init(new KakaoSDKAdapter());
+        RxPaparazzo.register(this);
 
     }
 
