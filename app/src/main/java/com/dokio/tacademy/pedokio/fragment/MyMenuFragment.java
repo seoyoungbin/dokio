@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.dokio.tacademy.pedokio.PetUploadActivity;
+import com.dokio.tacademy.pedokio.PetListActivity;
 import com.dokio.tacademy.pedokio.R;
 
 /**
@@ -42,7 +42,7 @@ public class MyMenuFragment extends Fragment {
         petupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PetUploadActivity.class);
+                Intent intent = new Intent(getActivity(), PetListActivity.class);
                 startActivity(intent);
             }
         });
