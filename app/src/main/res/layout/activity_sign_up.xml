@@ -81,6 +81,7 @@
                     android:textSize="13sp"
                     android:textColor="#bfbfbf"
                     android:id="@+id/idedit"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>
@@ -144,6 +145,7 @@
                     android:textColor="#bfbfbf"
                     android:inputType="textPassword"
                     android:id="@+id/passedit"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>
@@ -209,6 +211,7 @@
                     android:textColor="#bfbfbf"
                     android:inputType="textPassword"
                     android:id="@+id/passedit2"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>

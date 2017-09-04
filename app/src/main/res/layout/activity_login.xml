@@ -25,6 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="16"></LinearLayout>
         <ImageButton
+            android:id="@+id/backicon"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="48"
@@ -82,6 +83,7 @@
                     android:textSize="13sp"
                     android:textColor="#bfbfbf"
                     android:id="@+id/idinput"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>
@@ -145,6 +147,7 @@
                     android:textColor="#bfbfbf"
                     android:inputType="textPassword"
                     android:id="@+id/passinput"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>

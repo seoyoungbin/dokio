@@ -240,14 +240,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQEUST_CODE && resultCode == RESULT_CODE){
+        if(requestCode == REQEUST_CODE && resultCode == RESULT_CODE) {
             mMap.clear();
             rlat = data.getDoubleExtra("latitude", 0.0);
             rlng = data.getDoubleExtra("longitude", 0.0);
             name = data.getStringExtra("name");
-            MapMarker(rlat,rlng,name,4);
+            MapMarker(rlat, rlng, name, 4);
             MapRecyclerView.setVisibility(View.GONE);
-            searchx.setText(name+" 검색되었습니다.");
+            searchx.setText(name + " 검색되었습니다.");
             hotelbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
             cafebtn.setBackgroundColor(Color.parseColor("#eeeeee"));
             hospitalbtn.setBackgroundColor(Color.parseColor("#eeeeee"));
@@ -502,7 +502,16 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         CameraPosition ani = new CameraPosition.Builder()
                 .target(myLoc)
                 .zoom(13)
-                .bearing(60)
+                .tilt(30)
+                .build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(ani));
+    }
+
+    public void initMoveCamera(LatLng myLoc)
+    {
+        CameraPosition ani = new CameraPosition.Builder()
+                .target(myLoc)
+                .zoom(8)
                 .tilt(30)
                 .build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(ani));
@@ -512,6 +521,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        LatLng initloc = new LatLng(37.5759879,126.9763757);
+        initMoveCamera(initloc);
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -553,17 +564,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         else if (pos==1) {
             LatLng myloc = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hotel_marker)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
         }
         else if(pos==2){
             LatLng myloc = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.cafe_marker)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
         }
         else if(pos==3){
             LatLng myloc = new LatLng(lat, lng);
             mMap.addMarker(new MarkerOptions().position(myloc).title(name).icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital_marker)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myloc));
         }
         else if(pos==4){
             LatLng myloc = new LatLng(lat, lng);
@@ -616,7 +624,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                 public void onClick(View view) {
                     int pos = (int) view.getTag();
                     Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
-                    Log.i("T","통신결과3: "+pos);
                     intent.putExtra("_id",_id[pos]);
                     startActivity(intent);
                 }
