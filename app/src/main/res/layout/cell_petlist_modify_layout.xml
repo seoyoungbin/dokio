@@ -23,6 +23,7 @@
             android:layout_weight="72"
             android:gravity="center">
             <CheckBox
+                android:id="@+id/petchk_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -60,6 +61,7 @@
                 android:layout_weight="24"
                 android:weightSum="156">
                 <ImageView
+                    android:id="@+id/seximg"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="24"

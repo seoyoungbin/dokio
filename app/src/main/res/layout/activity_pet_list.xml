@@ -92,13 +92,14 @@
         android:layout_weight="560"
         android:weightSum="560">
 
-        <ListView
-            android:id="@+id/petlistview"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/petlistrecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="512"
-            android:divider="#ffffff"></ListView>
+            android:divider="#ffffff"></android.support.v7.widget.RecyclerView>
         <Button
+            android:id="@+id/addbtn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="48"

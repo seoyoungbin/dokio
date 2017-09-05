@@ -6,58 +6,150 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dokio.tacademy.pedokio.DiaryActivity"
-    android:orientation="vertical">
-    <RelativeLayout
+    android:orientation="vertical"
+    android:weightSum="616">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:background="#535353"
+        android:elevation="7dp"
+        android:orientation="vertical"
+        android:weightSum="56">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_above="@+id/submitli">
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></CalendarView>
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"></LinearLayout>
-
-            </ScrollView>
-        </LinearLayout>
-
-
+            android:layout_height="0dp"
+            android:layout_weight="4"></LinearLayout>
 
         <LinearLayout
-            android:id="@+id/submitli"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="0dp"
+            android:layout_weight="48"
             android:orientation="horizontal"
-            android:background="#aaaaaa">
+            android:weightSum="360">
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="5dp">
-            <EditText
-                android:layout_width="match_parent"
+                android:layout_weight="4"></LinearLayout>
+
+            <ImageButton
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/diary_edittext"/>
-            </LinearLayout>
+                android:layout_weight="48"
+                android:background="#00000000"
+                android:src="@drawable/backicon"
+                android:id="@+id/backbtn"/>
+
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0">
-            <Button
-                android:layout_width="60dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="전송"
-                />
-            </LinearLayout>
+                android:layout_weight="4"></LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="252"
+                android:gravity="center_vertical"
+                android:text="메모작성"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"></LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"></LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="560"
+        android:orientation="vertical">
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calender"
+            ></CalendarView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_above="@+id/submitlay"></android.support.v7.widget.RecyclerView>-->
+
+        <LinearLayout
+            android:id="@+id/submitlay"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="vertical"
+            android:background="#e2e2e2"
+            android:weightSum="48"
+            android:layout_alignParentBottom="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"></LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="34"
+                android:orientation="horizontal"
+                android:weightSum="360">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"></LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="340"
+                    android:background="@drawable/submit_edit"
+                    android:weightSum="340"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/memoedit"
+                        android:layout_marginLeft="2dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="300"
+                        android:background="@null"
+                        android:textSize="12sp"
+                        android:singleLine="true"/>
+                    <Button
+                        android:id="@+id/memobtn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="40"
+                        android:background="@drawable/submit_btn"
+                        android:text="입력"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"></LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"></LinearLayout>
+
+        </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
 
 </LinearLayout>
