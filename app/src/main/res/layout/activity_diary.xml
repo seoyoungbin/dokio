@@ -81,73 +81,74 @@
             ></CalendarView>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!--<android.support.v7.widget.RecyclerView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_above="@+id/submitlay"></android.support.v7.widget.RecyclerView>-->
-
-        <LinearLayout
-            android:id="@+id/submitlay"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="vertical"
-            android:background="#e2e2e2"
-            android:weightSum="48"
-            android:layout_alignParentBottom="true">
-            <LinearLayout
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/memorecycler"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="7"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_above="@id/submitlay"></android.support.v7.widget.RecyclerView>
             <LinearLayout
+                android:id="@+id/submitlay"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="34"
-                android:orientation="horizontal"
-                android:weightSum="360">
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:background="#e2e2e2"
+                android:weightSum="48"
+                android:layout_alignParentBottom="true">
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="10"></LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"></LinearLayout>
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="340"
-                    android:background="@drawable/submit_edit"
-                    android:weightSum="340"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/memoedit"
-                        android:layout_marginLeft="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="34"
+                    android:orientation="horizontal"
+                    android:weightSum="360">
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="300"
-                        android:background="@null"
-                        android:textSize="12sp"
-                        android:singleLine="true"/>
-                    <Button
-                        android:id="@+id/memobtn"
+                        android:layout_weight="10"></LinearLayout>
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="40"
-                        android:background="@drawable/submit_btn"
-                        android:text="입력"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp"/>
+                        android:layout_weight="340"
+                        android:background="@drawable/submit_edit"
+                        android:weightSum="340"
+                        android:orientation="horizontal">
 
+                        <EditText
+                            android:id="@+id/memoedit"
+                            android:layout_marginLeft="2dp"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="300"
+                            android:background="@null"
+                            android:textSize="12sp"
+                            android:singleLine="true"/>
+                        <Button
+                            android:id="@+id/memobtn"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="40"
+                            android:background="@drawable/submit_btn"
+                            android:text="입력"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"></LinearLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="10"></LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="7"></LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"></LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 

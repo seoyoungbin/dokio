@@ -31,4 +31,12 @@
 
     <!-- kakao -->
     <string name="kakao_app_key">e470aa358ae545f3f429c2ed76d74770</string>
+
+    <string name="demo">
+        <![CDATA[
+        ● hi
+        <br>● hello
+        <br>● sy
+        ]]>
+    </string>
 </resources>
