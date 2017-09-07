@@ -88,6 +88,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="219">
                     <TextView
+                        android:id="@+id/nametv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -650,6 +651,7 @@
                         android:layout_weight="8"></LinearLayout>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/btn1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="41.7"
@@ -721,7 +723,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="41.7"
-                    android:weightSum="328">
+                    android:weightSum="328"
+                    android:id="@+id/btn2">
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -790,7 +793,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="41.3"
-                    android:weightSum="328">
+                    android:weightSum="328"
+                    android:id="@+id/btn3">
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

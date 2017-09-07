@@ -96,6 +96,7 @@
             android:layout_weight="42"
             android:src="@drawable/searchway"
             android:background="#00000000"
+            android:id="@+id/mapsearch"
             ></ImageButton>
         <ImageButton
             android:layout_width="0dp"

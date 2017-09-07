@@ -10,15 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.dokio.tacademy.pedokio.DiaryActivity;
 import com.dokio.tacademy.pedokio.LoginActivity;
+import com.dokio.tacademy.pedokio.MyMenuBtnOneActivity;
+import com.dokio.tacademy.pedokio.MyMenuBtnThreeActivity;
+import com.dokio.tacademy.pedokio.MyMenuBtnTwoActivity;
 import com.dokio.tacademy.pedokio.PetListActivity;
 import com.dokio.tacademy.pedokio.PetUploadActivity;
 import com.dokio.tacademy.pedokio.R;
+import com.dokio.tacademy.pedokio.model.ResRootModel;
 import com.dokio.tacademy.pedokio.model.SearchListResRootModel;
 import com.dokio.tacademy.pedokio.net.NetProcess;
 import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Adib on 13-Apr-17.
@@ -27,10 +35,12 @@ import com.squareup.otto.Subscribe;
 public class MyMenuFragment extends Fragment {
 
     private AppCompatActivity activity;
-    LinearLayout petupload,starbtn,memobtn;
+    LinearLayout petupload,starbtn,memobtn,btn1,btn2,btn3;
     Button logoutbtn;
     int pos;
     int size=0;
+    TextView nametv;
+    CircleImageView profile_image;
 
 
     public static MyMenuFragment newInstance() {
@@ -43,27 +53,50 @@ public class MyMenuFragment extends Fragment {
         activity = ((AppCompatActivity) getActivity());
 
         NetProcess.getInstance().getNetBus().register(this);
+        NetProcess.getInstance().mypage_search(LoginActivity.token);
 
 //        logoutbtn = (Button) view.findViewById(R.id.logoutbtn);
         petupload = (LinearLayout) view.findViewById(R.id.petupload);
 //        starbtn = (LinearLayout) view.findViewById(R.id.starbtn);
         memobtn = (LinearLayout) view.findViewById(R.id.memobtn);
+        btn1 = (LinearLayout)view.findViewById(R.id.btn1);
+        btn2 = (LinearLayout)view.findViewById(R.id.btn2);
+        btn3 = (LinearLayout)view.findViewById(R.id.btn3);
+        nametv = (TextView)view.findViewById(R.id.nametv);
+        profile_image = (CircleImageView)view.findViewById(R.id.profile_image);
+
+
 //
         petupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NetProcess.getInstance().netpetlist(LoginActivity.token);
-                if(size==0)
-                {
-                    Intent intent = new Intent(getActivity(), PetUploadActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Intent intent = new Intent(getActivity(), PetListActivity.class);
-                    startActivity(intent);
-                }
+                NetProcess.getInstance().netpetlistsize(LoginActivity.token);
 
+
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MyMenuBtnOneActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MyMenuBtnTwoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MyMenuBtnThreeActivity.class);
+                startActivity(intent);
             }
         });
 //
@@ -117,12 +150,51 @@ public class MyMenuFragment extends Fragment {
         }
         // 성공 처리
         switch (res.getTr()) {
-            case "mobile_petlist": // 회원 가입후 처리!!
+            case "mobile_petlistsize": // 회원 가입후 처리!!
             {
                 // 상세 정보는 각자 해보시기 바랍니다.!!
                 size = res.getResult().size();
+                Log.i("T","통신결과:"+size);
+
+                if(size==0)
+                {
+                    Intent intent = new Intent(getActivity(), PetUploadActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(getActivity(), PetListActivity.class);
+                    startActivity(intent);
+                }
             }
-            break;
+
+
+        }
+    }
+
+    @Subscribe
+    public void onNetResponse(ResRootModel res) {
+
+        // 오류 처리
+        if (res.getSuccess_code() <= 0) {
+            // 팝업 처리
+            Log.i("T", "통신실패");
+            return;
+        }
+        // 성공 처리
+        switch (res.getTr()) {
+            case "mobile_mypage_search": // 회원 가입후 처리!!
+            {
+
+                Log.i("T","통신결과:"+res.getResult().getEmail()+res.getResult().getMyprof_img());
+                // 상세 정보는 각자 해보시기 바랍니다.!!
+                nametv.setText(res.getResult().getEmail());
+                Picasso.with(getActivity())
+                        .load(res.getResult().getMyprof_img())
+                        .into(profile_image);
+
+            }
+
 
         }
     }

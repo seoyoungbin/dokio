@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dokio.tacademy.pedokio">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
+
     <permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- gps checking -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -51,7 +51,6 @@
                 android:resource="@xml/rx_paparazzo_file_paths" />
         </provider>
 
-
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -62,11 +61,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchViewActivity"
-            android:windowSoftInputMode="adjustPan">
-
-
-        </activity>
+        <activity
+            android:name=".SearchViewActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SearchListActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".LoginActivity" />
@@ -75,8 +72,9 @@
         <activity android:name=".PetUploadActivity" />
         <activity android:name=".PetUploadDetailActivity" />
         <activity android:name=".PetListActivity" />
-        <activity android:name=".DiaryActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".DiaryActivity"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 네이버 아이디로 로그인에서 사용하는 액티비티를 등록 -->
         <activity
@@ -123,13 +121,17 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
 
         <!-- 뒤에서 작동하며 어떤 동작을 취하고 결과를 보내던지등등 처리한다 -->
         <service
             android:name=".GpsDetectService"
             android:enabled="true"
             android:exported="true" />
+
+        <activity android:name=".MyMenuBtnOneActivity" />
+        <activity android:name=".MyMenuBtnTwoActivity" />
+        <activity android:name=".MyMenuBtnThreeActivity"></activity>
     </application>
 
 </manifest>

@@ -628,6 +628,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
                     startActivity(intent);
                 }
             });
+            MapListViewHolder.mapsearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Uri gmmIntentUri = Uri.parse("google.navigation:q="+Alat[position]+","+Alng[position]);
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+                }
+            });
         }
 
 
@@ -643,7 +652,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
         TextView title, address;
         ImageView image;
         LinearLayout searchlist;
-        ImageButton callbtn;
+        ImageButton callbtn, mapsearch;
 
         public MapListViewHolder(View itemView) {
             super(itemView);
@@ -652,6 +661,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback {
             image = (ImageView) itemView.findViewById(R.id.advi);
             callbtn = (ImageButton) itemView.findViewById(R.id.callbtn);
             searchlist = (LinearLayout) itemView.findViewById(R.id.searchlist);
+            mapsearch = (ImageButton) itemView.findViewById(R.id.mapsearch);
+
 
         }
 
