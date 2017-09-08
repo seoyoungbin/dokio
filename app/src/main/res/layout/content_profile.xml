@@ -77,7 +77,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="40"
-                    android:src="@drawable/dog"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
@@ -93,7 +92,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        android:text="서영빈"
+                        android:text=""
                         android:textColor="#000000"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -120,7 +119,8 @@
                         android:background="@drawable/button_filterling"
                         android:text="로그아웃"
                         android:textSize="12sp"
-                        android:textColor="#959595"></Button>
+                        android:textColor="#959595"
+                        android:id="@+id/logoutbtn"></Button>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"

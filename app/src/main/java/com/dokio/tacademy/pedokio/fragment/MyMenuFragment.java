@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -55,7 +56,7 @@ public class MyMenuFragment extends Fragment {
         NetProcess.getInstance().getNetBus().register(this);
         NetProcess.getInstance().mypage_search(LoginActivity.token);
 
-//        logoutbtn = (Button) view.findViewById(R.id.logoutbtn);
+        logoutbtn = (Button) view.findViewById(R.id.logoutbtn);
         petupload = (LinearLayout) view.findViewById(R.id.petupload);
 //        starbtn = (LinearLayout) view.findViewById(R.id.starbtn);
         memobtn = (LinearLayout) view.findViewById(R.id.memobtn);
@@ -116,16 +117,16 @@ public class MyMenuFragment extends Fragment {
             }
         });
 //
-//        logoutbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), LoginActivity.class);
-//                intent.putExtra("logout_pos", pos);
-//                startActivity(intent);
-//                getActivity().finish();
-//
-//            }
-//        });
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.putExtra("logout_pos",1);
+                startActivity(intent);
+                activity.finish();
+
+            }
+        });
 
         return view;
 
@@ -188,10 +189,18 @@ public class MyMenuFragment extends Fragment {
 
                 Log.i("T","통신결과:"+res.getResult().getEmail()+res.getResult().getMyprof_img());
                 // 상세 정보는 각자 해보시기 바랍니다.!!
+                if(res.getResult().getMyprof_img()==null) {
+                    profile_image.setImageResource(R.drawable.mymenu_user);
+                    profile_image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                }
+                else{
+                    Picasso.with(getActivity())
+                            .load(res.getResult().getMyprof_img())
+                            .into(profile_image);
+                }
                 nametv.setText(res.getResult().getEmail());
-                Picasso.with(getActivity())
-                        .load(res.getResult().getMyprof_img())
-                        .into(profile_image);
+
 
             }
 
